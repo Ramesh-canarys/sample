@@ -1,0 +1,195 @@
+name: Analyze User Activity
+on:
+#  schedule:
+#    # every Tuesday at 07:00 UTC
+#    - cron: '0 7 * * 3'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  activity_days: 30
+
+jobs:
+  User-Activity-Report:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d_%H%M%S')"
+
+      - name: Analyze User Activity ( LTIM-Airoli-SVN )
+        id: LTIM-Airoli-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Airoli-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Airoli-SVN )
+        run: mv ${{ steps.LTIM-Airoli-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Airoli-SVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Bangalore-SVN )
+        id: LTIM-Bangalore-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Bangalore-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Bangalore-SVN )
+        run: mv ${{ steps.LTIM-Bangalore-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Bangalore-SVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Chennai-SVN )
+        id: LTIM-Chennai-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Chennai-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Chennai-SVN )
+        run: mv ${{ steps.LTIM-Chennai-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Chennai-SVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Digital-Inside )
+        id: LTIM-Digital-Inside
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Digital-Inside
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Digital-Inside )
+        run: mv ${{ steps.LTIM-Digital-Inside.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Digital-Inside_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-EasySkills-EA )
+        id: LTIM-EasySkills-EA
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-EasySkills-EA
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-EasySkills-EA )
+        run: mv ${{ steps.LTIM-EasySkills-EA.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-EasySkills-EA_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-EMTW-BangSVN )
+        id: LTIM-EMTW-BangSVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-EMTW-BangSVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-EMTW-BangSVN )
+        run: mv ${{ steps.LTIM-EMTW-BangSVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-EMTW-BangSVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Enterprise-Technology )
+        id: LTIM-Enterprise-Technology
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Enterprise-Technology
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Enterprise-Technology )
+        run: mv ${{ steps.LTIM-Enterprise-Technology.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Enterprise-Technology_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Infinity-GenAI )
+        id: LTIM-Infinity-GenAI
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Infinity-GenAI
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Infinity-GenAI )
+        run: mv ${{ steps.LTIM-Infinity-GenAI.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Infinity-GenAI_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-INS )
+        id: LTIM-INS
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-INS
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-INS )
+        run: mv ${{ steps.LTIM-INS.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-INS_${{ steps.date.outputs.date }}.csv 
+
+      - name: Analyze User Activity ( LTIM-Mahape-SVN )
+        id: LTIM-Mahape-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Mahape-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Mahape-SVN )
+        run: mv ${{ steps.LTIM-Mahape-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Mahape-SVN_${{ steps.date.outputs.date }}.csv 
+        
+      - name: Analyze User Activity ( LTIM-Powai-SVN )
+        id: LTIM-Powai-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Powai-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Powai-SVN )
+        run: mv ${{ steps.LTIM-Powai-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Powai-SVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Pune-SVN )
+        id: LTIM-Pune-SVN
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Pune-SVN
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Pune-SVN )
+        run: mv ${{ steps.LTIM-Pune-SVN.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Pune-SVN_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Salesforce )
+        id: LTIM-Salesforce
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Salesforce
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Salesforce )
+        run: mv ${{ steps.LTIM-LTIM-Salesforce.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Salesforce_${{ steps.date.outputs.date }}.csv
+
+      - name: Analyze User Activity ( LTIM-Shotclasses-EA )
+        id: LTIM-Shotclasses-EA
+        uses: peter-murray/inactive-users-action@v1
+        with:
+          token: ${{ secrets.REPORTS_PAT }}
+          organization: LTIM-Shotclasses-EA
+          activity_days: ${{ env.activity_days }}
+          outputDir: ${{ github.workspace }}/reports/
+
+      - name: rename the report ( LTIM-Shotclasses-EA )
+        run: mv ${{ steps.LTIM-Shotclasses-EA.outputs.report_csv }} ${{ github.workspace }}/reports/LTIM-Shotclasses-EA_${{ steps.date.outputs.date }}.csv
+    
+
+      - name: Save User Activity Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: User-Activity-Report_${{ steps.date.outputs.date }}
+          path: |
+            ${{ github.workspace }}/reports/*
+          retention-days: 5
