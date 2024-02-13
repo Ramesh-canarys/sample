@@ -192,4 +192,4 @@ jobs:
           name: User-Activity-Report_${{ steps.date.outputs.date }}
           path: |
             ${{ github.workspace }}/reports/*
-          retention-days: 5
+          retention-days: 30
